@@ -18,8 +18,6 @@ deploy :
         code: |-
           git config --global user.email "pleasemailus@wercker.com"
           git config --global user.name "wercker"
-    - npm-install
     - script:
         name: deploy
-        code: |-
-          gulp deploy
+        code: "npm run-script deploy"
