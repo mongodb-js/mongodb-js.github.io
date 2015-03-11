@@ -235,5 +235,7 @@ gulp.task('build', ['assets', 'pages'], function() {
 // Automatically triggered by wercker when a build in master passes tests.
 gulp.task('deploy', ['check', 'build'], function() {
   return gulp.src('dist/{*,**/*}')
-    .pipe(deploy());
+    .pipe(deploy({
+      branch: 'master' // org/username uses master, else gh-pages
+    }));
 });
