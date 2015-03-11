@@ -19,7 +19,8 @@ var browserify = require('browserify'),
   dc = require('dependency-check'),
   jshint = require('gulp-jshint'),
   jsfmt = require('gulp-jsfmt'),
-  pkg = require('./package.json');
+  pkg = require('./package.json'),
+  util = require('util');
 
 gulp.task('default', ['develop']);
 
@@ -234,8 +235,15 @@ gulp.task('build', ['assets', 'pages'], function() {
 // Deploy to gh pages if we're on master.
 // Automatically triggered by wercker when a build in master passes tests.
 gulp.task('deploy', ['check', 'build'], function() {
+  var opts = {
+    branch: 'master' // org/username uses master, else gh-pages
+  };
+
+  if (process.env.GITHUB_TOKEN) {
+    opts.remoteUrl = util.format('https://%s@github.com/mongodb-js/mongodb-js.github.io.git',
+      process.env.GITHUB_TOKEN);
+  }
+
   return gulp.src('dist/{*,**/*}')
-    .pipe(deploy({
-      branch: 'master' // org/username uses master, else gh-pages
-    }));
+    .pipe(deploy(opts));
 });
