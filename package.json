@@ -69,7 +69,6 @@
     "esformatter-braces": "^1.0.0",
     "esformatter-quotes": "^1.0.0",
     "esformatter-semicolons": "^1.0.3",
-    "git-branch": "^0.3.0",
     "gulp": "^3.8.10",
     "gulp-gh-pages": "^0.4.0",
     "gulp-jade": "^1.0.0",

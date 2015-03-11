@@ -11,7 +11,6 @@ var browserify = require('browserify'),
   less = require('gulp-less'),
   jade = require('gulp-jade'),
   deploy = require('gulp-gh-pages'),
-  getBranch = require('git-branch'),
   uglify = require('gulp-uglify'),
   sourcemaps = require('gulp-sourcemaps'),
   CleanCSS = require('less-plugin-clean-css'),
@@ -232,22 +231,9 @@ gulp.task('build', ['assets', 'pages'], function() {
   return merge(js, css);
 });
 
-gulp.task('current git branch', function(done) {
-  getBranch(function(err, name) {
-    if (err) return done(err);
-
-    pkg.repository.branch = name;
-    done();
-  });
-});
-
 // Deploy to gh pages if we're on master.
 // Automatically triggered by wercker when a build in master passes tests.
 gulp.task('deploy', ['check', 'build', 'current git branch'], function() {
-  if (pkg.repository.branch === 'master') {
-    return gulp.src('dist/{*,**/*}')
-      .pipe(deploy());
-  } else {
-    console.log('Skipping deploy.  Branch is ' + pkg.repository.branch + ' and will only deploy master.');
-  }
+  return gulp.src('dist/{*,**/*}')
+    .pipe(deploy());
 });
