@@ -233,7 +233,7 @@ gulp.task('build', ['assets', 'pages'], function() {
 
 // Deploy to gh pages if we're on master.
 // Automatically triggered by wercker when a build in master passes tests.
-gulp.task('deploy', ['check', 'build', 'current git branch'], function() {
+gulp.task('deploy', ['check', 'build'], function() {
   return gulp.src('dist/{*,**/*}')
     .pipe(deploy());
 });
