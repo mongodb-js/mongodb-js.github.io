@@ -236,7 +236,8 @@ gulp.task('build', ['assets', 'pages'], function() {
 // Automatically triggered by wercker when a build in master passes tests.
 gulp.task('deploy', ['check', 'build'], function() {
   var opts = {
-    branch: 'master' // org/username uses master, else gh-pages
+    branch: 'master', // org/username uses master, else gh-pages
+    message: '[ci skip] gh-pages deploy ' + (process.env.GIT_COMMIT_MESSAGE || '')
   };
 
   if (process.env.GITHUB_TOKEN) {

@@ -22,5 +22,8 @@ deploy :
       add-to-known_hosts:
         hostname: github.com
     - script:
+        name: last-commit-message
+        code: export GIT_COMMIT_MESSAGE=`git log --oneline HEAD | head -n 1`
+    - script:
         name: deploy
         code: "npm run-script deploy"
