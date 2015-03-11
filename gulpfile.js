@@ -247,5 +247,7 @@ gulp.task('deploy', ['check', 'build', 'current git branch'], function() {
   if (pkg.repository.branch === 'master') {
     return gulp.src('dist/{*,**/*}')
       .pipe(deploy());
+  } else {
+    console.log('Skipping deploy.  Branch is ' + pkg.repository.branch + ' and will only deploy master.');
   }
 });
