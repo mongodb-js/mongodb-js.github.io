@@ -47,3 +47,14 @@
   - generate release notes for `x.x.x` updating the description
   - `npm publish`
   - send notification to flowdock
+
+## Supported Environments
+
+- what should we commit to and make sure we have tests for?
+- MongoDB: 2 trailing stable releases?
+- node.js: 0.10, 0.12
+- iojs: support this?
+- browsers: IE 9+ else (chrome/firefox/safari) 2 trailing?
+
+
+
