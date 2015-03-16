@@ -9,19 +9,8 @@
 
 ## Testing
 
-- At the very least
-  - run mocha with one test that just tries to require your code
-  - travisci hook
-- For browser modules
-  - use [zuul](https://github.com/defunctzombie/zuul) + [saucelabs](https://saucelabs.com/)
-  - (@note this will be tooled in)
-- Server only modules
-  - use [mongodb-js/version-manager](https://github.com/mongodb-js/version-manager) for great good!
-    - Can then add checks for:
-      - using `MONGODB_VERSION` in .travis.yml?
-      - Is this actaully tested against a MongoDB releases?
-      - Is `MONGODB_VERSION` the latest stable release?
- - Make sure it works on windows using appveyor
+- `npm test` returns a non-zero exit code
+- travisci hook
 
 ## Code Coverage
 
@@ -37,9 +26,9 @@
 
 ## Style
 
-- 1 [.jshintrc](https://github.com/imlucas/khaos-amp/blob/master/template/.jshintrc)
-- 1 [.jsfmtrc](https://github.com/imlucas/khaos-amp/blob/master/template/.jsfmtrc)
-- never think about or discuss style again.
+- A `.jshintrc` [example](https://github.com/imlucas/khaos-amp/blob/master/template/.jshintrc)
+- A `.jsfmtrc` [example](https://github.com/imlucas/khaos-amp/blob/master/template/.jsfmtrc)
+- never think about or discuss style again
 
 ## Versioning
 
