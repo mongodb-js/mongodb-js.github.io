@@ -1,13 +1,12 @@
 var AmpersandView = require('ampersand-view'),
   ViewSwitcher = require('ampersand-view-switcher'),
-  RepoCollection = require('./models/repo-collection'),
-  RepoListView = require('./views/repo-list'),
-  RepoGridView = require('./views/repo-grid'),
-  RepoControlsView = require('./views/repo-controls'),
+  RepoCollection = require('../models/repo-collection'),
+  Organization = require('../models/organization'),
+  RepoListView = require('./list'),
+  RepoGridView = require('./grid'),
+  RepoControlsView = require('./controls'),
   _ = require('underscore'),
-  config = require('./config');
-
-var Organization = require('./models/organization');
+  config = require('../config');
 
 module.exports = AmpersandView.extend({
   collections: {
@@ -116,7 +115,7 @@ module.exports = AmpersandView.extend({
     }
     this.applyFilters();
   },
-  template: require('./repos.jade'),
+  template: require('./index.jade'),
   render: function() {
     this.renderWithTemplate();
     this.switcher = new ViewSwitcher(this.queryByHook('repos-container'), {

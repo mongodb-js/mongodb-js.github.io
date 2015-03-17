@@ -1,7 +1,7 @@
 var $ = require('jquery');
 
 var AmpersandView = require('ampersand-view'),
-  debug = require('debug')('mongodb-js:views:repo-controls');
+  debug = require('debug')('mongodb-js:repos:controls');
 
 module.exports = AmpersandView.extend({
   events: {
@@ -16,7 +16,7 @@ module.exports = AmpersandView.extend({
       key = el.selectedOptions[0].value;
 
     if (key === this.parent.sort_key) {
-      return debug('sort_key is already %s', sort_key);
+      return debug('sort_key is already %s', key);
     }
     debug('setting sort_key to %s', key);
     this.parent.sort_key = key;
@@ -43,5 +43,5 @@ module.exports = AmpersandView.extend({
 
     this.$el.find('select').val(this.parent.sort_key);
   },
-  template: require('./repo-controls.jade')
+  template: require('./controls.jade')
 });

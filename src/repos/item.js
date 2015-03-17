@@ -1,9 +1,5 @@
-var AmpersandView = require('ampersand-view');
-var $ = require('jquery');
-var popoverTpl = require('./repo-popover.jade');
-
-require('bootstrap/js/tooltip');
-require('bootstrap/js/popover');
+var AmpersandView = require('ampersand-view'),
+  _ = require('underscore');
 
 module.exports = AmpersandView.extend({
   bindings: {
@@ -55,26 +51,19 @@ module.exports = AmpersandView.extend({
     },
   },
   listeners: {
-    'change rendered': this.onRendered
+    // Short hand for `this.listenTo` in `initialize`.
+    //
+    // Example:
+    // 'change:rendered': 'onRendered'
   },
   initialize: function() {
-    this.listenTo(this, 'change:rendered', this.onRendered);
+    this._initListeners();
   },
-  onRendered: function() {
-    process.nextTick(function() {
-      this.$a = $('[data-toggle="popover"]', this.el);
-      this.$a.popover({
-        html: true,
-        trigger: 'hover',
-        container: 'body',
-        placement: 'auto right',
-        content: popoverTpl(this.model)
-      });
-
-// this.$a.on('shown.bs.popover', function() {
-//   $('.popover-content').html(popoverTpl(this.model));
-// }.bind(this));
-    }.bind(this));
-  },
-  template: require('./repo-grid-item.jade')
+  _initListeners: function(){
+    _.each(this.listeners, function(handlerName, eventName){
+      this.listenTo(this, eventName, function(){
+        _.defer(this[handlerName].bind(this));
+      }.bind(this));
+    }, this);
+  }
 });
