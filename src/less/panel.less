@@ -1,0 +1,45 @@
+@import "./variables.less";
+
+.panel {
+  .list-group {
+    margin-bottom: 0;
+
+    .list-group-item {
+      border-width: 1px 0;
+      border-radius: 0;
+    }
+  }
+  .btn-group-justified {
+    a.btn {
+      border: 0;
+      text-align: left;
+      .stat-label {
+        .text-muted;
+        margin-right: 10px;
+        display: inline-block;
+      }
+      .stat-value {
+        font-weight: bold;
+        display: inline-block;
+      }
+    }
+  }
+
+  .well {
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+
+  .panel-heading {
+    padding-bottom: 10px;
+  }
+}
+
+.panel-table {
+  .panel-heading {
+    border-width-bottom: 0px;
+  }
+  .table {
+    margin-bottom: 0px;
+  }
+}
