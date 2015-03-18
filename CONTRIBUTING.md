@@ -8,12 +8,7 @@ Hi, welcome to mongodb-js. Here is some information to get you started as a cont
 
 For Mac and Windows, get the installer from [nodejs.org](https://nodejs.org/download/) and install it. That will get you `node` and `npm`. 
 
-For Ubuntu, you can get a stable version from the default repository via 
-```
-sudo apt-get install nodejs
-sudo apt-get install npm
-```
-or install nvm (node version manager) for latest version and easy way to swich versions for testing. See installation instructions [here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server).
+For Linux distributions, check [this article](https://nodesource.com/blog/nodejs-v012-iojs-and-the-nodesource-linux-repositories) on how to install a current version of node.js. (Note: the article is also linked from [node's wiki page](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).)
 
 **2. Setup git and github **
 
@@ -33,7 +28,9 @@ For small ("micro-")modules, it's okay to just have a single _master_ branch.
 
 For anything larger (like apps, or complex modules) we're loosely following [nvie's branching model](http://nvie.com/posts/a-successful-git-branching-model/), where _master_ is the stable branch, _develop_ (or _dev_) is bleeding edge, and bufixes and features live on feature branches until they are reviewed and merged into the develop branch. nvie's release and hotfix branches are not that important (at least not yet).
 
-If you send a pull request, please check what branches exist on the target repo. If there is more than one branch, please do **not** send any pull requests to _master_! They must go to _dev_ / _develop_.
+In any case, please read the `CONTRIBUTING` document in the repo's root directory for specific instructions how to contribute. 
+
+If you send a pull request, please also check what branches exist on the target repo. If there is more than one branch, then you should probably not send pull requests to _master_.
 
 ### mongodb-js organization members
 
@@ -46,9 +43,8 @@ As external contributor you don't have push rights to any of the repos. If you w
 
 ### Sublime Text 2/3 Plugins
 
-If you use Sublime Text as your editor, you may find these plugins useful:
+If you use Sublime Text as your editor, you may find these plugins from [Sublime Package Control](https://packagecontrol.io/installation) useful:
 
-- [Sublime Package Control](https://packagecontrol.io/installation) one package to rule them all. 
 - [jsfmt](https://packagecontrol.io/packages/jsfmt) a sublime plugin for [jsfmt](http://rdio.github.io/jsfmt/). Helps to keep a consistent code style for your JavaScript. [Install via Package Control](https://github.com/ionutvmi/sublime-jsfmt#installation)
 - [SublimeLinter-jshint](https://packagecontrol.io/packages/SublimeLinter-jshint) a sublime plugin for the language-agnostic [SublimeLinter](https://packagecontrol.io/packages/SublimeLinter) plugin, using [jshint](http://jshint.com/). Checks for common mistakes and problems in your JavaScript code, like globally defined variables, missing semicolons, etc. Make sure to follow the installation steps listed on the [website](https://packagecontrol.io/packages/SublimeLinter-jshint).
 - [Jade](https://packagecontrol.io/packages/Jade) Syntax highlighing for .jade files (html templates)
