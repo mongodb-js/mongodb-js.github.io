@@ -3,6 +3,10 @@
 A collective of JavaScript that does things to or with MongoDB.
 
 <dl>
+  <dt><a href="welcome.md">Welcome to mongodb-js</a></dt>
+  <dd>
+    Information for new contributors (internal or external) to get you started.
+  </dd>
   <dt><a href="new-to-js.md">New To JS</a></dt>
   <dd>
     Helpful links and resources for folks new to working with JavaScript.
