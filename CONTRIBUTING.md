@@ -1,4 +1,4 @@
-# Welcome
+# Contributing
 
 Hi, welcome to mongodb-js. Here is some information to get you started as a contributor:
 
@@ -15,19 +15,10 @@ sudo apt-get install npm
 ```
 or install nvm (node version manager) for latest version and easy way to swich versions for testing. See installation instructions [here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server).
 
-**2. Install git**
+**2. Setup git and github **
 
-Mac users can get an installer from [http://git-scm.com/download/mac](). Windows users get it from [http://git-scm.com/download/win](). Linux users can usually use their respective package managers, e.g. for Ubuntu:
-```
-sudo apt-get install git
-```
+See [Setting up Git](https://help.github.com/articles/set-up-git/#setting-up-git) on Github's website for instructions to get started with git and github.
 
-For first time git setup, also make sure you set your name and email address, e.g.
-```
-git config --global user.name "John Doe"
-git config --global user.email johndoe@example.com
-```
-There are some more [global git setup options](http://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup).
 
 **3. Join gitter channel**
 
@@ -46,22 +37,11 @@ If you send a pull request, please check what branches exist on the target repo.
 
 ### mongodb-js organization members
 
-To contribute to existing repos, push your changes to a feature branch (pick a meaningful name, e.g. `feature-123-welcomepage`) and make a pull request. Ask for a review on [gitter](https://gitter.im/mongodb-js), or ping someone directly. You can also assign the PR to anyone for review. 
+To contribute to existing repos, push your changes to a feature branch (pick a meaningful name, e.g. `feature-123-welcomepage`) and make a pull request. If you want a code review, ask on [gitter](https://gitter.im/mongodb-js), or ping someone directly. You can also assign the PR to anyone for review. 
 
 ### External contributors
 
-As external contributor you don't have push rights to any of the repos. If you want to suggest changes, fork the repo, push your changes to a feature branch in your fork, and make a pull request. Ask on [gitter](https://gitter.im/mongodb-js) for a review. It's probably a good idea to also ask on gitter first, before you put a lot of work in a change or new feature. Maybe your feature is already in someone's private clone, or we already decided against such a change.
-
-## Configs
-
-#### Javascript Format, Linting
-
-- [`.jsfmtrc`](./jsfmtrc)
-- [`.jshintrc`](./jshintrc)
-
-#### Setting up TravisCI 
-
-- [`.travis.yml`](./travis.yml)
+As external contributor you don't have push rights to any of the repos. If you want to suggest changes, fork the repo, push your changes to a feature branch in your fork, and make a pull request. 
 
 
 ### Sublime Text 2/3 Plugins
