@@ -31,7 +31,7 @@ There are some more [global git setup options](http://git-scm.com/book/en/v2/Get
 
 **3. Join gitter channel**
 
-We're hanging on [gitter.im](https://gitter.im/mongodb-js), join the channel to stay up to date or ask questions. 
+We're hanging out on [gitter.im](https://gitter.im/mongodb-js), join the channel to stay up to date or ask questions. 
 
 
 ## Contributing
