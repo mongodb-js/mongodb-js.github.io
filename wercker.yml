@@ -1,0 +1,29 @@
+---
+box: wercker/nodejs
+build:
+  steps:
+    - npm-install
+    -
+      script:
+        code: "npm run check"
+        name: check
+    -
+      script:
+        code: "npm run-script test"
+        name: test
+deploy :
+  steps :
+    - script:
+        name: configure
+        code: |-
+          git config --global user.email "pleasemailus@wercker.com"
+          git config --global user.name "wercker"
+    -
+      add-to-known_hosts:
+        hostname: github.com
+    - script:
+        name: last-commit-message
+        code: export GIT_COMMIT_MESSAGE=`git log --oneline HEAD | head -n 1`
+    - script:
+        name: deploy
+        code: "npm run-script deploy"
