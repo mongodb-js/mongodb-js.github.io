@@ -31,7 +31,7 @@
 - node.js: `0.10`, `0.12`
 - iojs: `1.x`
 - browsers: IE 9+ and latest chrome/firefox/safari
-- 
+
 ## Documentation
 
 - More important than features.  Nobody will use your project if it doesn't look like they can trust it
