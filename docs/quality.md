@@ -1,60 +1,71 @@
 # Quality
 
-- Don't want to break this for driver, mongoose
-- Want input from these maintainers on establishing best practies, not to just
-  create more work
-- Result of this will be incorporated into our tooling,
-  [mj](https://github.com/rueckstiess/mj), for automated organization wide
-  checking and scaffolding for new projects
+> @wip: Actively collecting feedback from contributors to create a set of shared
+> best practices. The result of this will be incorporated into a 
+> tooling module ([mj](https://github.com/mongodb-js/mj)) which will automate 
+> as much of the process as possible.
 
 ## Testing
 
-- `npm test` returns a non-zero exit code
-- travisci hook
+- `<required>`: `npm test` returns a non-zero exit code
+- `<required>`: TravisCI connected to your project
+- `<required>`: CI configured to test against your project's appropriate [supported environments](#supported-environments)
 
 ## Code Coverage
 
-- do it if possible
-- tooling will template out istanbul + mocha + coveralls.io
-
-## Documentation
-
-- A lot of different needs here
-- For general small modules, examples in README + comments where it makes sense
-- If you expose more than `module.exports = function(){}`, use jsdoc tags + `dox --api`
-- Tooling will publish a pretty version to github pages for you
+- `[optional]`: If it's easy for your project then do it, else don't sweat it.
 
 ## Style
 
-- A `.jshintrc` [example](https://github.com/imlucas/khaos-amp/blob/master/template/.jshintrc)
-- A `.jsfmtrc` [example](https://github.com/imlucas/khaos-amp/blob/master/template/.jsfmtrc)
-- never think about or discuss style again
+- `<required>`: `npm run check` returns a non-zero exit code
+- `[optional]`: Your check script lints, formats and smoke tests your project
 
 ## Versioning
 
-- Use semver
-- Major version releases encouraged
-
-## Releasing
-
-- no humans.
-- can wercker just use https://github.com/twolfson/foundry or https://github.com/boennemann/semantic-release?
-- send pull request from dev to master with commit message `[release x.x.x]...`
-- wercker tests, lints, etc and updates PR
-- if all clear, wercker will
-  - run `npm version x.x.x` to update package.json
-  - create a git tag for `x.x.x`
-  - generate release notes for `x.x.x` updating the description
-  - `npm publish`
-  - send notification to flowdock
+- `<required>`: Use responsible semver so you don't break your upstream dependencies
+- `[optional]`: Make major version releases whenever possible 
 
 ## Supported Environments
 
-- what should we commit to and make sure we have tests for?
-- MongoDB: 2 trailing stable releases?
-- node.js: 0.10, 0.12
-- iojs: support this?
-- browsers: IE 9+ else (chrome/firefox/safari) 2 trailing?
+- MongoDB: at least 2 most recent stable releases and latest unstable reslease using [mongodb-runner](https://github.com/mongodb-js/runner)
+- node.js: `0.10`, `0.12`
+- iojs: `1.x`
+- browsers: IE 9+ and latest chrome/firefox/safari
+- 
+## Documentation
 
+- More important than features.  Nobody will use your project if it doesn't look like they can trust it
+- README.md must exist
+- README.md must have examples or a `View Examples` link
+- Use jsdoc tags for at least `exports` of your main module
+- `mj` will 
+  - provide a nice shared theme
+  - use [dox](http://npm.im/dox) to build your docs content
+  - publish a pretty version to github pages as a part of [releasing][#releasing]
 
+## Releasing
 
+- Must have a `.npmignore` file so at least your project's tests/examples/docs are excluded from the tarball published to npm
+- Binary add-ons should use [node-pre-gyp](https://github.com/mapbox/node-pre-gyp)
+- [mj](https://github.com/mongodb-js/mj) will provide the following for all modules:
+  - no humans required
+  - publish to npm 
+  - publish notification to a REST endpoint (shows up in flockdock/gitter activity feeds)
+
+## Code Review
+
+- Do it.
+- Use pull requests
+- [reviewable.io](http://reviewable.io) is nice, easy, free and integrates very well with github
+- Get feedback from users and create a context trail for your fellow and future contributors
+
+## Contributor Guidelines
+
+- Must have a CONTRIBUTING.md
+- @todo: What are some good examples we could use to add to templates?
+
+## Licensing
+
+- Must have a LICENSE file
+- Any reason not to use MIT for everything?
+- "Why is this part of quality?": must be dead simple for users to do licensing audits
