@@ -27,21 +27,87 @@
 
 ## Supported Environments
 
-- MongoDB: at least 2 most recent stable releases and latest unstable reslease using [mongodb-runner](https://github.com/mongodb-js/runner)
-- node.js: `0.10`, `0.12`
-- iojs: `1.x`
-- browsers: IE 9+ and latest chrome/firefox/safari
+### `.travis.yml`
+
+```yaml
+os: linux
+language: node_js
+# node.js support: Latest stable version, `0.10.x`, and `0.8.x`
+# iojs support: Latest stable version
+node_js:
+  - "node"
+  - "0.10"
+  - "0.8"
+  - "iojs"
+# MongoDB Support: Latest 2.6, Latest 3.0 and Latest unstable
+# @see https://github.com/mongodb-js/version-manager/blob/master/README.md#travisci-automation
+env:
+  - MONGODB_VERSION=2.6.x
+  - MONGODB_VERSION=3.0.x
+  - MONGODB_VERSION=3.1.x
+```
+
+### `appveyor.yml`
+
+```yaml
+# @todo: Figure out which versions of windows this will actually build node-pre-gyp bins for.
+# windows arch support: 32-bit and 64-bit
+# node.js support: Latest stable version, `0.10.x`
+# iojs support: Latest stable version
+environment:
+  matrix:
+    - nodejs_version: 0.10.36
+      platform: x86
+      msvs_toolset: 12
+    - nodejs_version: 0.10.36
+      platform: x64
+      msvs_toolset: 12
+    - nodejs_version: 0.12.0
+      platform: x86
+      msvs_toolset: 12
+    - nodejs_version: 0.12.0
+      platform: x64
+      msvs_toolset: 12
+    - nodejs_version: 1.1.0
+      platform: x86
+      msvs_toolset: 12
+    - nodejs_version: 1.1.0
+      platform: x64
+      msvs_toolset: 12
+```
+
+### `.zuul.yml`
+
+```yaml
+# We will make sure all modules usable in the UI work with the following browser versions.
+browsers:
+  - name: chrome
+    version: latest
+  - name: safari
+    version: latest
+  - name: firefox
+    version: latest
+  - name: ie
+    version: latest
+  - name: iphone
+    version: latest
+```
 
 ## Documentation
 
-- More important than features.  Nobody will use your project if it doesn't look like they can trust it
-- README.md must exist
-- README.md must have examples or a `View Examples` link
-- Use jsdoc tags for at least `exports` of your main module
-- `mj` will 
+- `<required>` A `README.md` file.
+- `<required>` `README.md` contains at least 1 example of how to use your module or a `View Examples` link.
+- `<required>` Use jsdoc tags for at least `exports` of your main module.
+
+### FAQ
+
+#### "Why should I care about docs?  I want to write features!"
+
+Nobody will use your project if it doesn't look like they can trust it.  Fear not the days of `jsdoc` 
+generating hundreds of html files with 0 content.  [mj](http://github.com/mongodb-js/mj) will 
   - provide a nice shared theme
-  - use [dox](http://npm.im/dox) to build your docs content
-  - publish a pretty version to github pages as a part of [releasing][#releasing]
+  - use [dox](http://npm.im/dox) to build your docs content (for example, [connect-mongodb-session](http://github.com/mongodb-js/connect-mongodb-session))
+  - publish a pretty version to your projects github page as a part of [releasing][#releasing]
 
 ## Releasing
 
@@ -61,11 +127,21 @@
 
 ## Contributor Guidelines
 
-- Must have a CONTRIBUTING.md
+- `<required>` A `CONTRIBUTING.md` file
 - @todo: What are some good examples we could use to add to templates?
 
 ## Licensing
 
-- Must have a LICENSE file
-- Any reason not to use MIT for everything?
-- "Why is this part of quality?": must be dead simple for users to do licensing audits
+- `<required>` A `LICENSE` file
+- `<required>` Apache License 2.0
+- `<required>` The `license` of your project's `package.json` must not be empty.
+
+### FAQ 
+#### Why Apache License 2.0? 
+
+It's what we use for all of the drivers already and is very permissive. It differs from the MIT 
+license by clarifying several key details, including patent and trademark rights.
+
+#### Why is this part of quality?
+
+Licensing audits are part of the process for start-up financing (technical due dilligence) and bringing projects into the enterprise (get sign-off from legal).  This is a painful process we must make as simple as we can.  For more details, see [davglass/license-checker](https://github.com/davglass/license-checker).
